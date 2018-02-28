@@ -5,6 +5,9 @@ Screenshot proof of work GIT-IT
 ![GIT-IT proof of work](GititWeek1.png)
 
 Week 2 - CSS Flexbox + CSS Grid
+KWEENI
+https://codepen.io/KianGroenen/pen/MQXXRQ
+
 Screenshot proof of work FroggyFlexbox
 ![FroggyFlexbox proof of work](FlexboxFroggyWeek2.png)
 
