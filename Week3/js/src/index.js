@@ -11,6 +11,7 @@ class Note {
 
     newNote.classList.add('card');
     p.innerHTML = title;
+    a.href = '#';
     a.classList.add('card-remove');
     a.innerHTML = 'Remove';
     a.addEventListener('click', this.remove.bind(newNote));
@@ -26,18 +27,25 @@ class Note {
     n.appendChild(a);
   }
   
-  saveToStorage(value){
+  saveToStorage(title){
     // HINT🤩
     // localStorage only supports strings, not arrays
     // if you want to store arrays, look at JSON.parse and JSON.stringify
     let i = localStorage.length;
-    localStorage.setItem(i, value);
+    localStorage.setItem(i, title);
     console.log(localStorage.length);
   }
-  
-  remove(){
+
+  remove(newNote){
     // HINT🤩 the meaning of 'this' was set by bind() in the createElement function
     // in this function, 'this' will refer to the current note element
+    //for (let i = 0; i < localStorage.length; i++) {
+    //  if (localStorage.getItem(i) === newNote) {
+    //    localStorage.removeItem(i);
+    //  }
+    //}
+    console.log(newNote);
+    //this.remove();
   } 
 }
 
@@ -71,6 +79,7 @@ class App {
     if (value !== '') {
       let note = new Note(value);
       note.saveToStorage(value);
+      this.reset();
     }
     // HINT🤩
     // note.add();
@@ -80,6 +89,8 @@ class App {
   
   reset(){
     // this function should reset the form 
+    document.querySelector('form').reset();
+    document.querySelector('#txtAddNote').focus();
   }
   
 }
