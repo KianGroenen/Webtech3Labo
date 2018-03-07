@@ -1,20 +1,29 @@
 class Note {
   constructor(title) {
     this.title = title;
-    // HINT🤩 this.element = this.createElement(title);
+    this.element = this.createElement(title);
   }
   
   createElement(title){
     let newNote = document.createElement('div');
-    
-    // HINT🤩 a.addEventListener('click', this.remove.bind(newNote));
-    
-    return newNote;
+    let p = document.createElement('p');
+    let a = document.createElement('a');
+
+    newNote.classList.add('card');
+    p.innerHTML = title;
+    a.classList.add('card-remove');
+    a.innerHTML = 'Remove';
+    a.addEventListener('click', this.remove.bind(newNote));
+    this.add(newNote, p, a);
   }
   
-  add(){
+  add(newNote, p, a){
     // HINT🤩
     // this function should append the note to the screen somehow
+    let notes = document.querySelector('.notes');
+    notes.appendChild(newNote);
+    newNote.appendChild(p);
+    newNote.appendChild(a);
   }
   
   saveToStorage(){
@@ -32,7 +41,8 @@ class Note {
 class App {
   constructor() {
     console.log("👊🏼 The Constructor!");
-  
+    this.btnAdd = document.querySelector('#btnAddNote');
+    this.btnAdd.addEventListener('click', this.createNote.bind(this));
     // HINT🤩
     // clicking the button should work
     // pressing the enter key should also work
@@ -49,7 +59,8 @@ class App {
    
   createNote(e){
     // this function should create a new note by using the Note() class
-    
+    let value = document.querySelector('#txtAddNote').value;
+    let note = new Note(value);
     // HINT🤩
     // note.add();
     // note.saveToStorage();
