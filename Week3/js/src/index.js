@@ -17,19 +17,22 @@ class Note {
     this.add(newNote, p, a);
   }
   
-  add(newNote, p, a){
+  add(n, p, a){
     // HINT🤩
     // this function should append the note to the screen somehow
     let notes = document.querySelector('.notes');
-    notes.appendChild(newNote);
-    newNote.appendChild(p);
-    newNote.appendChild(a);
+    notes.appendChild(n);
+    n.appendChild(p);
+    n.appendChild(a);
   }
   
-  saveToStorage(){
+  saveToStorage(value){
     // HINT🤩
     // localStorage only supports strings, not arrays
     // if you want to store arrays, look at JSON.parse and JSON.stringify
+    let i = localStorage.length;
+    localStorage.setItem(i, value);
+    console.log(localStorage.length);
   }
   
   remove(){
@@ -41,6 +44,7 @@ class Note {
 class App {
   constructor() {
     console.log("👊🏼 The Constructor!");
+    this.loadNotesFromStorage();
     this.btnAdd = document.querySelector('#btnAddNote');
     this.btnAdd.addEventListener('click', this.createNote.bind(this));
     // HINT🤩
@@ -55,12 +59,19 @@ class App {
     // HINT🤩
     // load all notes from storage here and add them to the screen
     // something like note.add() in a loop would be nice
+    for (let i = 0; i < localStorage.length; i++) {
+      let note = new Note(localStorage.getItem(i));
+      console.log(localStorage.getItem(i));
+    }
   }
    
   createNote(e){
     // this function should create a new note by using the Note() class
     let value = document.querySelector('#txtAddNote').value;
-    let note = new Note(value);
+    if (value !== '') {
+      let note = new Note(value);
+      note.saveToStorage(value);
+    }
     // HINT🤩
     // note.add();
     // note.saveToStorage();
