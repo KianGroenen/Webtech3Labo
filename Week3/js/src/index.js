@@ -31,8 +31,8 @@ class Note {
     // HINT🤩
     // localStorage only supports strings, not arrays
     // if you want to store arrays, look at JSON.parse and JSON.stringify
-    let i = localStorage.length;
-    localStorage.setItem(i, title);
+    //let i = localStorage.length;
+    localStorage.setItem(title, title);
     console.log(localStorage.length);
   }
 
@@ -44,8 +44,8 @@ class Note {
     //    localStorage.removeItem(i);
     //  }
     //}
-    console.log(newNote);
-    //this.remove();
+    localStorage.removeItem(this.getElementsByTagName('p')[0].innerHTML);
+    this.remove();
   } 
 }
 
