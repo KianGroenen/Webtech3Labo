@@ -67,8 +67,9 @@ class App {
     // HINT🤩
     // load all notes from storage here and add them to the screen
     // something like note.add() in a loop would be nice
+    let keys = Object.keys(localStorage);
     for (let i = 0; i < localStorage.length; i++) {
-      let note = new Note(localStorage.getItem(i));
+      let note = new Note(localStorage.getItem(keys[i]));
       console.log(localStorage.getItem(i));
     }
   }
@@ -76,7 +77,7 @@ class App {
   createNote(e){
     // this function should create a new note by using the Note() class
     let value = document.querySelector('#txtAddNote').value;
-    if (value !== '') {
+    if (value !== '' && localStorage.getItem(value) == null) {
       let note = new Note(value);
       note.saveToStorage(value);
       this.reset();
