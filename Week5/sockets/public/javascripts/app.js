@@ -9,8 +9,13 @@ var primus = Primus.connect(url, {
 
 primus.on('data', function(data) {
 	var title = document.querySelector(".title--live");
-	if (title) {
-		title.innerHTML = "Ghost clicked";
+	var a1 = document.querySelector(".answer1--live");
+	var a2 = document.querySelector(".answer2--live");
+
+	if (title && a1 && a2) {
+		title.innerHTML = data.action[0];
+		a1.innerHTML = data.action[1];
+		a2.innerHTML = data.action[2];
 	}
 });
 
