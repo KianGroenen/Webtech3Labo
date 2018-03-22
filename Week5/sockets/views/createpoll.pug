@@ -1,0 +1,9 @@
+extends layout
+
+block content
+	h1 Axe a question
+	form(action="/createpoll" method="post")
+	input(class="input question" name="question")
+	input(class="input answer1" name="answer1")
+	input(class="input answer2" name="answer2")
+	input(type="submit" value="Submit" class="submit")
