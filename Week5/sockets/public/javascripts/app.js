@@ -31,13 +31,13 @@ primus.on('data', function(data) {
 
 	if (data.add2) {
 		var a2 = document.querySelector(".answer2--live");
-		a1.style.fontSize = size2 + 10 + "px";
+		a2.style.fontSize = size2 + 10 + "px";
 		size2 = size2 + 10;
 		console.log(size2);
 	}
 });
 
-// klik naar server sturen
+// kliks naar server sturen
 if (document.querySelector('.submit') !== null) {
 	document.querySelector('.submit').addEventListener('click', function(e){
 		var q = document.querySelector('.question').value;
